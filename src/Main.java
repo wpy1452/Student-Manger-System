@@ -207,11 +207,26 @@ public class Main{
         Student stu1=new Student(1001,"张三",15,100);
         Student stu2=new Student(1002,"李四",16,200);
         Student stu3=new Student(1003,"王五",16,34.2);
-        StudentManger manger =new StudentManger();
-        manger.addStudent(stu1);
-        manger.addStudent(stu2);
-        manger.addStudent(stu3);
-        manger.showAllStudents();
+        StudentManager manager =new StudentManager();
+        manager.addStudent(stu1);
+        manager.addStudent(stu2);
+        manager.addStudent(stu3);
+        manager.showAllStudents();
+
+        manager.deleteStudent(1002);
+        manager.showAllStudents();
+        Student findStu1=manager.findStudent(1001);
+        Student findStu2=manager.findStudent(1005);
+        if(findStu1!=null){
+            findStu1.showInfo();
+        }else{
+            System.out.println("未找到此人");
+        }
+        if(findStu2!=null){
+            findStu2.showInfo();
+        }else{
+            System.out.println("未找到此人");
+        }
 
     }
 }
