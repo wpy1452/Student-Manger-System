@@ -17,7 +17,12 @@ public class Student {
     }
 
     public void setScore(double score) {
-        this.score = score;
+        if (score < 0 || score > 100) {
+            System.out.println("Invalid score");
+        }else{
+            this.score = score;
+        }
+
     }
 
     public int getId() {

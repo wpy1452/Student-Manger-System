@@ -205,7 +205,7 @@
 public class Main{
     public static void main(String[] args){
         Student stu1=new Student(1001,"张三",15,100);
-        Student stu2=new Student(1002,"李四",16,200);
+        Student stu2=new Student(1002,"李四",16,50);
         Student stu3=new Student(1003,"王五",16,34.2);
         StudentManager manager =new StudentManager();
         manager.addStudent(stu1);
@@ -227,6 +227,13 @@ public class Main{
         }else{
             System.out.println("未找到此人");
         }
+        boolean result=manager.updateStudent(1001,30);
+        if(result){
+            System.out.println("yes");
+        }else{
+            System.out.println("no");
+        }
+        manager.showAllStudents();
 
     }
 }

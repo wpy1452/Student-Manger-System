@@ -26,6 +26,18 @@ public class StudentManager {
 
     }
 
+    public boolean updateStudent(int id,double score){
+        Student stu=findStudent(id);
+        if(stu!=null){
+
+                    stu.setScore(score);
+                    return true;
+
+        }
+        return false;
+
+    }
+
     public void showAllStudents(){
         for(Student stu:students){
             System.out.println("ID:"+stu.getId()+" Name:"+stu.getName()+"Age"+stu.getAge()+" Score:"+stu.getScore());
