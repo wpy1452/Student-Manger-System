@@ -1,10 +1,15 @@
 import java.util.ArrayList;
 public class StudentManager {
-    StudentManager() {}
     private ArrayList<Student> students=new ArrayList<>();
 
-    public void addStudent(Student stu){
-        students.add(stu);
+    public boolean addStudent(Student stu){
+        if(findStudent(stu.getId())!=null){
+            return false;
+        }else{
+            students.add(stu);
+            return true;
+        }
+
     }
 
     public void deleteStudent(int id){
@@ -30,8 +35,10 @@ public class StudentManager {
         Student stu=findStudent(id);
         if(stu!=null){
 
-                    stu.setScore(score);
-                    return true;
+                    if(stu.setScore(score)){
+                        return true;
+                    }
+
 
         }
         return false;

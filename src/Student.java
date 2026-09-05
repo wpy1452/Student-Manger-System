@@ -16,12 +16,12 @@ public class Student {
         return score;
     }
 
-    public void setScore(double score) {
-        if (score < 0 || score > 100) {
-            System.out.println("Invalid score");
-        }else{
+    public boolean setScore(double score) {
+        if (score > 0 && score < 100) {
             this.score = score;
+            return true;
         }
+        return false;
 
     }
 
