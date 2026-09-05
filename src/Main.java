@@ -201,15 +201,17 @@
 //        System.out.println("最高成绩："+score[idx]);
 //    }
 //}
-import java.util.Scanner;
+
 public class Main{
     public static void main(String[] args){
         Student stu1=new Student(1001,"张三",15,100);
         Student stu2=new Student(1002,"李四",16,200);
-        stu1.showInfo();
-        stu2.showInfo();
-        stu1.setScore(120);
-        stu1.showInfo();
+        Student stu3=new Student(1003,"王五",16,34.2);
+        StudentManger anger =new StudentManger();
+        manger.addStudent(stu1);
+        manger.addStudent(stu2);
+        manger.addStudent(stu3);
+        manger.showAllStudents();
 
     }
 }

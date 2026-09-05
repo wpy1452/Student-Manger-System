@@ -48,3 +48,4 @@ public class Student {
         System.out.println("id:"+id+" name:"+name+" age:"+age+" score:"+score);
     }
 }
+
