@@ -207,7 +207,7 @@ public class Main{
         Student stu1=new Student(1001,"张三",15,100);
         Student stu2=new Student(1002,"李四",16,200);
         Student stu3=new Student(1003,"王五",16,34.2);
-        StudentManger anger =new StudentManger();
+        StudentManger manger =new StudentManger();
         manger.addStudent(stu1);
         manger.addStudent(stu2);
         manger.addStudent(stu3);
