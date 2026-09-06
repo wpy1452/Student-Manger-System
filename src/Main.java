@@ -266,6 +266,7 @@ public class Main{
             System.out.println("add failed");
 
         }else{
+            manager.saveToFile();
             System.out.println("add success");
         }
     }
@@ -275,6 +276,7 @@ public class Main{
         int deleteId=sc.nextInt();
         boolean deleteResult=manager.deleteStudent(deleteId);
         if(deleteResult){
+            manager.saveToFile();
             System.out.println("deleted");
         }else{
             System.out.println("failed");
@@ -303,6 +305,7 @@ public class Main{
         double updateScore=sc.nextDouble();
         boolean updateResult=manager.updateStudent(updateId,updateScore);
         if(updateResult){
+            manager.saveToFile();
             System.out.println("yes");
         }else{
             System.out.println("no");
@@ -327,6 +330,7 @@ public class Main{
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
         StudentManager manager=new StudentManager();
+        manager.loadFromFile();
         while(true){
             try{
                 showMenu();
