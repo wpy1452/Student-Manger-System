@@ -17,7 +17,7 @@ public class Student {
     }
 
     public boolean setScore(double score) {
-        if (score > 0 && score < 100) {
+        if (score >= 0 && score <= 100) {
             this.score = score;
             return true;
         }

@@ -12,12 +12,14 @@ public class StudentManager {
 
     }
 
-    public void deleteStudent(int id){
+    public boolean deleteStudent(int id){
         for(int i=0;i<students.size();i++){
             if(students.get(i).getId()==id){
                 students.remove(i);
+                return true;
             }
         }
+        return false;
     }
 
     public Student findStudent(int id){

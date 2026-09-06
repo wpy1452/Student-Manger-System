@@ -203,79 +203,110 @@
 //}
 import java.util.Scanner;
 public class Main{
+    public static void addStudent(Scanner sc,StudentManager manager){
+        Student stu=new Student();
+        System.out.println("print id");
+        int id=sc.nextInt();
+        stu.setId(id);
+        System.out.println("print name");
+        String name=sc.next();
+        stu.setName(name);
+        System.out.println("print age");
+        int age=sc.nextInt();
+        stu.setAge(age);
+        System.out.println("print score");
+        double score=sc.nextDouble();
+        boolean setResult=stu.setScore(score);
+        if(!setResult){
+            System.out.println("failed");
+            return;
+        }
+        if(!manager.addStudent(stu)){
+            System.out.println("failed");
+            return;
+        }else{
+            System.out.println("success");
+        }
+    }
+
+    public static void deleteStudent(Scanner sc,StudentManager manager){
+        System.out.println("print id");
+        int deleteId=sc.nextInt();
+        boolean deleteResult=manager.deleteStudent(deleteId);
+        if(deleteResult){
+            System.out.println("deleted");
+        }else{
+            System.out.println("failed");
+        }
+    }
+
+    public static void findStudent(Scanner sc,StudentManager manager){
+        System.out.println("print id");
+        int findId=sc.nextInt();
+        Student findStu=manager.findStudent(findId);
+        if(findStu!=null){
+            findStu.showInfo();
+        }else{
+            System.out.println("not found");
+        }
+    }
+
+    public static void updateStudent(Scanner sc,StudentManager manager){
+        System.out.println("print id");
+        int updateId=sc.nextInt();
+        if(manager.findStudent(updateId)==null){
+            System.out.println("not found");
+            return;
+        }
+        System.out.println("print score");
+        double updateScore=sc.nextDouble();
+        boolean updateResult=manager.updateStudent(updateId,updateScore);
+        if(updateResult){
+            System.out.println("yes");
+        }else{
+            System.out.println("no");
+        }
+    }
+
+    public static void showAllStudent(StudentManager manager){
+        manager.showAllStudents();
+    }
+
+    public static void showMenu(){
+        System.out.println("========== 学生管理系统 ==========");
+        System.out.println("1. 添加学生");
+        System.out.println("2. 删除学生");
+        System.out.println("3. 查询学生");
+        System.out.println("4. 修改成绩");
+        System.out.println("5. 显示所有学生");
+        System.out.println("0. 退出系统");
+        System.out.println("==================================");
+    }
+
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
         StudentManager manager=new StudentManager();
         while(true){
-            System.out.println("========== 学生管理系统 ==========");
-            System.out.println("1. 添加学生");
-            System.out.println("2. 删除学生");
-            System.out.println("3. 查询学生");
-            System.out.println("4. 修改成绩");
-            System.out.println("5. 显示所有学生");
-            System.out.println("0. 退出系统");
-            System.out.println("==================================");
+           showMenu();
 
             int choice=sc.nextInt();
 
             switch(choice){
                 case 1:
-                    Student stu=new Student();
-                    System.out.println("print id");
-                    int id=sc.nextInt();
-                    if(manager.findStudent(id)!=null){
-                        System.out.println("already exist");
-                        break;
-                    }
-                    stu.setId(id);
-                    System.out.println("print name");
-                    String name=sc.next();
-                    stu.setName(name);
-                    System.out.println("print age");
-                    int age=sc.nextInt();
-                    stu.setAge(age);
-                    System.out.println("print score");
-                    double score=sc.nextDouble();
-                    boolean setResult=stu.setScore(score);
-                    if(!setResult){
-                        System.out.println("failed");
-                        break;
-                    }
-                    manager.addStudent(stu);
+                    addStudent(sc,manager);
                     break;
                 case 2:
-                    System.out.println("print id");
-                    int deleteId=sc.nextInt();
-                    manager.deleteStudent(deleteId);
+                    deleteStudent(sc,manager);
                     break;
                 case 3:
-                    System.out.println("print id");
-                    int findId=sc.nextInt();
-                    Student findStu=manager.findStudent(findId);
-                    if(findStu!=null){
-                        findStu.showInfo();
-                    }else{
-                        System.out.println("not found");
-                    }
+                    findStudent(sc,manager);
                     break;
                 case 4:
-                    System.out.println("print id");
-                    int updateId=sc.nextInt();
-                    if(manager.findStudent(updateId)==null){
-                        System.out.println("not found");
-                        break;
-                    }
-                    System.out.println("print score");
-                    double updateScore=sc.nextDouble();
-                    boolean updateResult=manager.updateStudent(updateId,updateScore);
-                    if(updateResult){
-                        System.out.println("yes");
-                    }else{
-                        System.out.println("no");
-                    }
+                    updateStudent(sc,manager);
+
                     break;
                 case 5:
-                    manager.showAllStudents();
+                    showAllStudent(manager);
                     break;
                 case 0:
                     return;
