@@ -203,29 +203,53 @@
 //}
 import java.util.Scanner;
 public class Main{
+    public static int inputInt(Scanner sc){
+        while(true){
+            try{
+                int num=sc.nextInt();
+                return num;
+            }catch(Exception e){
+                System.out.println("error");
+                sc.next();
+            }
+        }
+    }
+
     public static void addStudent(Scanner sc,StudentManager manager){
         Student stu=new Student();
         System.out.println("print id");
-        int id=sc.nextInt();
+        int id=inputInt(sc);
         stu.setId(id);
         System.out.println("print name");
         String name=sc.next();
         stu.setName(name);
         System.out.println("print age");
-        int age=sc.nextInt();
+        int age=inputInt(sc);
         stu.setAge(age);
-        System.out.println("print score");
-        double score=sc.nextDouble();
-        boolean setResult=stu.setScore(score);
-        if(!setResult){
-            System.out.println("failed");
-            return;
+        while (true) {
+            try {
+
+                    System.out.println("print score");
+                    double score=sc.nextDouble();
+                    boolean setResult=stu.setScore(score);
+                    if(!setResult){
+                        System.out.println("成绩不符合要求");
+                        continue;
+                    }
+
+                break;
+            } catch (Exception e) {
+                System.out.println("score error print");
+                System.out.println("请重新输入");
+                sc.next();
+            }
         }
+
         if(!manager.addStudent(stu)){
-            System.out.println("failed");
-            return;
+            System.out.println("add failed");
+
         }else{
-            System.out.println("success");
+            System.out.println("add success");
         }
     }
 
@@ -287,31 +311,37 @@ public class Main{
         Scanner sc=new Scanner(System.in);
         StudentManager manager=new StudentManager();
         while(true){
-           showMenu();
+            try{
+                showMenu();
 
-            int choice=sc.nextInt();
+                int choice=sc.nextInt();
 
-            switch(choice){
-                case 1:
-                    addStudent(sc,manager);
-                    break;
-                case 2:
-                    deleteStudent(sc,manager);
-                    break;
-                case 3:
-                    findStudent(sc,manager);
-                    break;
-                case 4:
-                    updateStudent(sc,manager);
+                switch(choice){
+                    case 1:
+                        addStudent(sc,manager);
+                        break;
+                    case 2:
+                        deleteStudent(sc,manager);
+                        break;
+                    case 3:
+                        findStudent(sc,manager);
+                        break;
+                    case 4:
+                        updateStudent(sc,manager);
 
-                    break;
-                case 5:
-                    showAllStudent(manager);
-                    break;
-                case 0:
-                    return;
-                default:
-                    System.out.println("error");
+                        break;
+                    case 5:
+                        showAllStudent(manager);
+                        break;
+                    case 0:
+                        return;
+                    default:
+                        System.out.println("error");
+                }
+            }catch(Exception e){
+                System.out.println("error");
+                System.out.println("请重新输入");
+                sc.next();
             }
 
 
