@@ -209,7 +209,24 @@ public class Main{
                 int num=sc.nextInt();
                 return num;
             }catch(Exception e){
-                System.out.println("error");
+                System.out.println("输入不合法");
+                sc.next();
+            }
+        }
+    }
+
+    public static int inputAge(Scanner sc){
+        while(true){
+            try{
+                int age=sc.nextInt();
+                if(age<=0||age>100){
+                    System.out.println("年龄输入错误,请重新输入");
+
+                    continue;
+                }
+                return age;
+            }catch(Exception e){
+                System.out.println("输入不合法");
                 sc.next();
             }
         }
@@ -224,7 +241,7 @@ public class Main{
         String name=sc.next();
         stu.setName(name);
         System.out.println("print age");
-        int age=inputInt(sc);
+        int age=inputAge(sc);
         stu.setAge(age);
         while (true) {
             try {
